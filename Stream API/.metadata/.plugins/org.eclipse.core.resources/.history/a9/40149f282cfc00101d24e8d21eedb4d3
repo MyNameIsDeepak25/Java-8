@@ -1,0 +1,33 @@
+package com.infy.practice;
+
+import java.util.Arrays;
+import java.util.List;
+
+public class FlatPractice {
+  
+	
+	public static void main(String[] args) {
+	 // flatening list of collections
+	
+		List<List<Integer>> numbers = List.of(
+			    List.of(1, 2, 3),
+			    List.of(4, 5),
+			    List.of(6, 7, 8)
+			);
+		
+		
+		numbers.stream().flatMap(l->l.stream()).forEach(System.out::println );
+		
+		
+		List<String> sentences = List.of(
+			    "Java is  powerful",
+			    "Streams are cool"
+			);
+
+	sentences.stream()
+	.flatMap(s->Arrays.stream(s.split(" ")))
+	.distinct()
+	.forEach(System.out::println);
+	
+	}
+}

@@ -1,0 +1,4 @@
+INDEX VERSION 1.131+C:\Users\Expert\Desktop\Java 8 Jan\Stream API\.metadata\.plugins\org.eclipse.jdt.core
+329624605.index
+1865797976.index
+1136505628.index
