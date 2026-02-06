@@ -2,6 +2,7 @@ package com.groupingAndPartition;
 
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 public class Employee {
@@ -165,6 +166,46 @@ public class Employee {
 				
 				
 	}
+	
+	
+//	Group employees by department
+//	and store employee names only (not Employee objects)
+//	
+	public static Map<String, List<String>> getByNames(List<Employee> list){
+		return list.stream().collect(
+				
+				Collectors.groupingBy(
+						
+						Employee :: getDepartment,
+						Collectors.mapping(Employee :: getName, 
+								
+								Collectors.toList()
+								)
+						
+						
+						
+						)
+				
+				
+				
+				);
+				
+	}
+	
+	
+//	Group employees by department
+//	but store result as a Set
+	
+	public static Map<String, Set<Employee>> getByDept(List<Employee> list){
+		return list.stream().collect(
+				Collectors.groupingBy(
+						Employee :: getDepartment ,
+						Collectors.toSet()
+						
+						)
+				
+				);
+	}
     public static void main(String[] args) {
     	List<Employee> employees = List.of(
     		    new Employee(1,  "Amit",    "IT", "Male",   55000),
@@ -180,7 +221,10 @@ public class Employee {
     		);
     	
     	
-//    	System.out.println(getByDepartMent(employees));
+ 	getByDepartMent(employees).forEach(
+ 			(dept,employee)->System.out.println(dept + " " + employee )
+ 			
+ 			);
 //        System.out.println(getByGender(employees));
 //        System.out.println(getBySalary(employees));
 //     
@@ -206,7 +250,20 @@ public class Employee {
     		  System.out.println(dept+ "-> " + sum)
     		  );
       
-
+      Map<String, List<String>> result4=getByNames(employees);
+      result4.forEach(
+    		  
+    		  (dept,name)->
+    		  System.out.println(dept+ "-> " + name)
+    		  );
+      
+      Map<String, Set<Employee>> result5=getByDept(employees);
+      result5.forEach(
+    		  
+    		  (dept,name)->
+    		  System.out.println(dept+ "-> " + name)
+    		  );
+      
 	}
 	
 }
