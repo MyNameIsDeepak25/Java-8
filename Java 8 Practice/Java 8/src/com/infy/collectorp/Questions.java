@@ -63,7 +63,11 @@ public class Questions {
             		Collectors.groupingBy(
             				
             				s->s.charAt(0),
-            				Collectors.summingInt(String :: length)
+            				    Collectors.groupingBy(
+            				    		
+            				    		String::length
+            				    		
+            				    		)
             				
             				)
             		
