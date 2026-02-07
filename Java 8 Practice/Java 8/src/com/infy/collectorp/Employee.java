@@ -34,6 +34,7 @@ public class Employee {
         		);
         	
         	
+        	// find total salary of each department 
         	employees.stream()
         	.collect(
         			
@@ -44,6 +45,19 @@ public class Employee {
         					)
         			
         			).forEach((k,v)-> System.out.println(k + " "  + v));
+        	
+        	//Group employees by department and find the average salary per department.
+        	employees.stream().collect(
+        			
+        			Collectors.groupingBy(
+        					 Employee :: getDept,
+        					    Collectors.averagingDouble(Employee :: getSalary)
+        					
+        					)
+        			
+        			).forEach((k,v)-> System.out.println(k + " "  + v));
+        	
+        	
 
 		}
 }
